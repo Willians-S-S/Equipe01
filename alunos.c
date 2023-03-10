@@ -23,8 +23,6 @@ Alunos *inserirAlunos(Alunos *listaAlun){
     
     new->listaNotas = iniciarNotas();
 
-    // if(!listaAlun) return new;
-
     new->prox = listaAlun;
     if(listaAlun) listaAlun->ante = new;
 
@@ -65,46 +63,3 @@ void Insert_Sort(Alunos *listaAlun){
         printf("4\n\n");
     }
 }
-
-
-// void Insert_Sort(Alunos *listaAlun){
-//     Alunos *atual = listaAlun->prox; 
-//     char nome[20];
-
-//     while(atual != NULL){
-//         Alunos *chave = atual;
-//         strcpy(nome, chave->nome);
-//         Alunos *anterior = chave->ante;
-
-//         while(anterior != NULL && strcmp(anterior->nome, nome) > 0){
-//             strcpy(anterior->prox->nome, anterior->nome);
-//             anterior->prox->listaNotas = anterior->listaNotas;
-//             anterior = anterior->ante;
-//         }
-//         if(anterior == NULL){
-//             strcpy(listaAlun->nome, chave->nome);
-//             listaAlun->listaNotas = chave->listaNotas;
-//         }else{
-//             strcpy(anterior->prox->nome, chave->nome);
-//             anterior->prox->listaNotas = chave->listaNotas;
-//         }     
-//         atual = atual->prox;
-//     }
-// }
-
-
-
-// void insertion_sort(char *lista, int n){
-//     int i, j;
-//     char *key;
-//     for (i = 1; i < n; i++) {
-//         key = lista[i];
-//         j = i - 1;
-//         while (j >= 0 && strcmp(lista[j], key) > 0) {
-//             lista[j + 1] = lista[j];
-//             j--;
-//         }
-//         lista[j + 1] = key;
-//     }
-// }
-
