@@ -17,29 +17,43 @@ Alunos *iniciar(){
 
 Alunos *inserirAlunos(Alunos *listaAlun){
     Alunos *new = (Alunos*) malloc(sizeof(Alunos)); 
+    int qtd;
+    printf("Digite o nome do aluno: ");
     scanf(" %s", new->nome);
     new->prox = NULL;
     new->ante = NULL;
     
     new->listaNotas = iniciarNotas();
 
+    printf("Digite a quantidade de motas que irá inserir: ");
+    scanf(" %d", &qtd);
+
+    for(int i = 0; i < qtd; i++){
+        printf("Digite a %dº nota: ", i);
+        new->listaNotas = inserirNotas(new->listaNotas);
+    }
+
     new->prox = listaAlun;
     if(listaAlun) listaAlun->ante = new;
-
+    printf("\n");
     return new;
 }
 
 void mostrarAlunos(Alunos * listaAlun){
-    Alunos *aux = listaAlun;
-
-    while(aux != NULL){
-        printf("Aluno: %s \n\n", aux->nome);
-        aux = aux->prox;
+    if(listaAlun){
+        printf("%s\n", listaAlun->nome);
+        printf("Notas: ");
+        mostrarNotas(listaAlun->listaNotas);
+        printf("\n\n");
+        mostrarAlunos(listaAlun->prox);
     }
 }
 
 void selecionSort(Alunos * listaAlun){
-    Alunos *aux, *aux2, *min, *aux3;
+    Alunos *aux, *aux2, *min;
+    char aux3[20];
+    
+
 
     for(aux = listaAlun; aux != NULL; aux = aux->prox){
         min = aux;
@@ -49,12 +63,23 @@ void selecionSort(Alunos * listaAlun){
             }
         }
         if(aux != min){
-            strcpy(aux3->nome, aux->nome);
-            aux3->listaNotas = aux->listaNotas;
+            strcpy(aux3, aux->nome);
+            Notas *aux4 = aux->listaNotas;
+    
             strcpy(aux->nome, min->nome);
             aux->listaNotas = min->listaNotas;
+
             strcpy(min->nome, aux3);
+            min->listaNotas = aux4;
         }
     }
 }
 
+void ordenar(Alunos *listaAlun){
+    Alunos *aux = listaAlun;
+    selecionSort(listaAlun);
+
+    while(aux){
+        selection_sort_Notas(aux->listaNotas);
+    }
+}

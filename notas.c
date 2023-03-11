@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 #include "notas.h"
 
@@ -14,16 +15,22 @@ Notas *iniciarNotas(){
 
 Notas *inserirNotas(Notas *listaNotas){
     Notas *new = (Notas*) malloc(sizeof(Notas)); 
-    scanf("%f", new->nota);
+    scanf("%f", &new->nota);
     new->prox = NULL;
     new->ante = NULL;
 
-    if(!listaNotas) return new;
-
-    return new->prox = listaNotas;
+    new->prox = listaNotas;
+    return new;
 }
 
-void *selection_sort(Notas *cabeca) {
+void mostrarNotas(Notas *listaNotas){
+    if(listaNotas){
+        printf("%.1f ", listaNotas->nota);
+        mostrarNotas(listaNotas->prox);
+    }
+}
+
+void selection_sort_Notas(Notas *cabeca) {
     Notas *aux, *aux2, *min;
     
     int aux3;

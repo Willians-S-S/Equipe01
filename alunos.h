@@ -5,7 +5,4 @@ Alunos *inserirAlunos(Alunos *listaDis);
 void mostrarAlunos(Alunos * listaAlun);
 
 void selecionSort(Alunos * listaAlun);
-
-void Insert_Sort(Alunos *listaAlun);
-
-void insertion_sort(char **lista, int n);
+void ordenar(Alunos *listaAlun);
