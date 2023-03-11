@@ -39,59 +39,22 @@ void mostrarAlunos(Alunos * listaAlun){
 }
 
 void selecionSort(Alunos * listaAlun){
-    Alunos *aux, *aux2;
-    char str[20];
+    Alunos *aux, *aux2, *min, *aux3;
 
     for(aux = listaAlun; aux != NULL; aux = aux->prox){
+        min = aux;
         for(aux2 = aux->prox; aux2 != NULL; aux2 = aux2->prox){
-            if(strcmp(aux->nome, aux2->nome) > 0){
-                strcpy(str, aux2->nome);
-                strcpy(aux2->nome, aux->nome);
-                strcpy(aux->nome, str);
+            if(strcmp(aux2->nome, min->nome) < 0){
+                min = aux2;
             }
+        }
+        if(aux != min){
+            strcpy(aux3->nome, aux->nome);
+            aux3->listaNotas = aux->listaNotas;
+            strcpy(aux->nome, min->nome);
+            aux->listaNotas = min->listaNotas;
+            strcpy(min->nome, aux3);
         }
     }
 }
 
-// void selecionSort(Alunos * listaAlun){
-//     Alunos *aux, *aux2, *min;
-//     char str[20];
-
-//     for(aux = listaAlun; aux != NULL; aux = aux->prox){
-//         min = aux;
-//         for(aux2 = aux->prox; aux2 != NULL; aux2 = aux2->prox){
-//             if(strcmp(str, min->nome) < 0) min = aux2;
-//         }
-//         if(aux != min){
-//             strcpy(str, aux->nome);
-//             strcpy(aux->nome, min->nome);
-//             strcpy(min->nome, str);
-//         }
-//     }
-// }
-
-
-// void Insert_Sort(Alunos *listaAlun){
-//     Alunos *atual = listaAlun, *anterior;
-//     char aux[20];
-
-//     for(; atual != NULL; atual = atual->prox){
-//         strcpy(aux, atual->nome);
-//         anterior = atual->ante;
-
-//         while(anterior != NULL && strcmp(aux, anterior->nome) < 0){
-
-//             strcpy(anterior->prox->nome, anterior->nome);
-//             anterior = anterior->ante;
-//         }
-
-//         if(anterior == NULL){
-//             strcpy(listaAlun->nome, aux);
-//         }else if( strcmp(aux, anterior->nome) < 0){
-           
-//             strcpy(anterior->nome, aux);
-
-//         }
-//         printf("4\n\n");
-//     }
-// }
