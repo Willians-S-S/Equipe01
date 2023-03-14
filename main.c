@@ -17,4 +17,6 @@ int main(){
     ordenar(alun);
     printf("\n\nOrdenado\n");
     mostrarAlunos(alun);
+
+    return 0;
 }
